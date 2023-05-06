@@ -28,18 +28,29 @@ body {
 }
 
 .image {
-  height: 180px;
-
+  height: 40px;
+  position: relative;
 }
 
 .image > img { 
   background-color: aqua;
   border-radius: 50%;
-  height: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
-
-
+.image > hr {
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+ 
 
 
 .inputBox>label {
