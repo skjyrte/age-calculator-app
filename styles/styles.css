@@ -27,50 +27,43 @@ body {
   padding: 12px;
 }
 
-.image {
-  height: 40px;
-  position: relative;
-}
-
-.image > img { 
-  background-color: aqua;
-  border-radius: 50%;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-}
-
-.image > hr {
-  margin: 0;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-}
- 
-
-
 .inputBox>label {
   /*typical behaviour overriden?*/
-  display: block;
   font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
   font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   color: hsl(0, 1%, 44%);
+  display: block;
 }
 
 .inputBox>input {
-  font-size: 20px;
-  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 800;
+  color: hsl(0, 0%, 8%);
   height:40px;
   width:70px;
+  border-radius: 3px;
   border-width: 1px;
-  font-weight: 700;
-  color: hsl(0, 0%, 8%);
+  padding-left: 15px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+  /*content below offset*/
+  margin-bottom: 50px;
+}
+
+.image>img {
+  background-color: hsl(259, 100%, 65%);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  /*vertical margin offset*/
+  margin-bottom: -30px;
+  padding:15px;
 }
 
 /*results*/
