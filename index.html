@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+
+  <title>Frontend Mentor | Age calculator app</title>
+
+
+</head>
+<body>
+
+  <div class="frame">
+    <div class="inputArea">
+      <div class="inputBox">
+        <label for="day">Day</label>
+        <input type="text" name="day" placeholder="DD" required minlength="1" maxlength="2" size="2">
+      </div>
+      <div class="inputBox">
+        <label for="month">Month</label>
+        <input type="text" name="month" placeholder="MM" required minlength="1" maxlength="2" size="2">
+      </div>
+      <div class="inputBox">
+        <label for="year">Year</label>
+        <input type="text" name="year" placeholder="YYYY" required minlength="4" maxlength="4" size="4">
+      </div>
+    </div>
+    <div class="image"> 
+      <img src="images\icon-arrow.svg">
+      <hr>
+    </div>
+
+    <div class="resultArea">
+      <div class="resultField">
+        <p class="resultYear">--</p>
+        <p class="resultDesc">years</p></div>
+      <div class="resultField">
+        <p class="resultMonth">--</p>
+        <p class="resultDesc">months</p></div>
+      <div class="resultField">
+        <p class="resultDay">--</p>
+        <p class="resultDesc">days</p></div>
+    </div>
+  </div>
+
+  </div>
+</body>
+</html>
