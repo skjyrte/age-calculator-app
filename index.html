@@ -21,17 +21,20 @@
 
   <div class="frame">
     <div class="inputArea">
-      <div class="inputBox">
+      <div class="inputBox dayInput">
         <label for="day">Day</label>
-        <input type="text" id="day" name="day" placeholder="DD" required minlength="1" maxlength="2" size="2">
+        <input type="number" id="day" name="day" placeholder="DD" required minlength="1" maxlength="2" size="2">
+        <div class="error">a</div>  
       </div>
-      <div class="inputBox">
+      <div class="inputBox monthInput">
         <label for="month">Month</label>
-        <input type="text" id="month" name="month" placeholder="MM" required minlength="1" maxlength="2" size="2">
+        <input type="number" id="month" name="month" placeholder="MM" required minlength="1" maxlength="2" size="2">
+        <div class="error">b</div>
       </div>
-      <div class="inputBox">
+      <div class="inputBox yearInput">
         <label for="year">Year</label>
-        <input type="text" id="year" name="year" placeholder="YYYY" required minlength="4" maxlength="4" size="4">
+        <input type="number" id="year" name="year" placeholder="YYYY" required minlength="4" maxlength="4" size="4">
+        <div class="error">c</div>
       </div>
     </div>
     <div class="image"> 
@@ -40,13 +43,13 @@
 
     <div class="resultArea">
       <div class="resultField">
-        <p class="resultYear">--</p>
+        <p class="yearResult">--</p>
         <p class="resultDesc">years</p></div>
       <div class="resultField">
-        <p class="resultMonth">--</p>
+        <p class="monthResult">--</p>
         <p class="resultDesc">months</p></div>
       <div class="resultField">
-        <p class="resultDay">--</p>
+        <p class="dayResult">--</p>
         <p class="resultDesc">days</p></div>
     </div>
   </div>

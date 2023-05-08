@@ -76,7 +76,7 @@ body {
   font-style: italic
 }
 
-.resultDay, .resultMonth, .resultYear {
+.dayResult, .monthResult, .yearResult {
   margin: 0;
   color: hsl(259, 100%, 65%);
 }
