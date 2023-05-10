@@ -91,21 +91,14 @@ const dayValidators = [required, isBetweenRange(1, 31)];
 //check after the onclick event
 document.querySelector(".image").addEventListener("click", () => {
   //NEW
-  let birthdayString = {
-    year: "",
-    month: "",
-    day: "",
-  };
-
-  //NEW
-  birthdayString.day = characterValidator(2, "day", birthday.day); //days
-  birthdayString.month = characterValidator(2, "month", birthday.month); //months
-  birthdayString.year = characterValidator(4, "year", birthday.year); //years
+  characterValidator(2, "day", birthday.day); //days
+  characterValidator(2, "month", birthday.month); //months
+  characterValidator(4, "year", birthday.year); //years
 
   //NEW
   let birthdayDate = dayjs(
-    `${birthdayString.year}-${birthdayString.month}-${birthdayString.day}`,
-    "YYYY-MM-DD",
+    `${birthday.year}-${birthday.month}-${birthday.day}`,
+    "YYYY-M-D",
     true
   );
 
