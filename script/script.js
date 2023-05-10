@@ -1,57 +1,42 @@
+"use strict";
+//dayJS plugins
 dayjs.extend(preciseDiff);
 dayjs.extend(window.dayjs_plugin_customParseFormat);
-
-//const yearInput = document.querySelector(".yearInput");
-//const monthInput = document.querySelector(".monthInput");
-//const dayInput = document.querySelector(".dayInput");
-
-
-document.querySelectorAll('input[type="number"]').forEach(input =>{
+//limit the character count for input type "number"
+document.querySelectorAll('input[type="number"]').forEach((input) => {
   input.oninput = () => {
-    if(input.value.length > input.maxLength) input.value = input.value.slice(0, input.maxLength);
-  }
-})
+    if (input.value.length > input.maxLength)
+      input.value = input.value.slice(0, input.maxLength);
+  };
+});
 
-
-const yearResult = document.querySelector(".yearResult");
-const monthResult = document.querySelector(".monthResult");
-const dayResult = document.querySelector(".dayResult");
-
-
-
+//fill the birthday object with input values
 document.querySelector(".inputArea").addEventListener("input", setValue);
-
 function setValue(e) {
-  birthday[e.target.name] = e.target.value.toString();
+  birthday[e.target.name] = e.target.valueAsNumber; //value is a string
 }
 
-//birthday object, string values
+//birthday object, property value type "number"
 let birthday = {
-  year: "0",
-  month: "0",
-  day: "0",
+  year: 0,
+  month: 0,
+  day: 0,
 };
 
 const currentDate = dayjs();
 
 //VALIDATORS
-const required = (lngt) => (val) => {
+const required = (val) => {
   if (!val) {
     return "This field is required.";
   }
-
-  if (val.length !== lngt) {
-    return "improper date format.";
-  }
-
-  return null;
 };
-
-
 
 //day, month, year validator
 const isBetweenRange = (min, max) => (val) => {
   if (val < min) {
+    console.log(typeof val); //temp check
+    console.log(typeof min); //temp check
     return `Value should be at least ${min}.`;
   }
 
@@ -60,6 +45,15 @@ const isBetweenRange = (min, max) => (val) => {
   }
 
   return null;
+};
+//NEW
+const characterValidator = (lngth, selector, val) => {
+  let valStr = val.toString();
+  while (valStr.length < lngth) {
+    valStr = "0" + valStr;
+    document.querySelector(`#${selector}`).value = valStr;
+  }
+  return valStr;
 };
 
 //birthday date validator
@@ -90,38 +84,54 @@ const validate = (val, validators) =>
     return errors;
   }, []);
 
-const yearValidators = [required(4), isBetweenRange(1900, 2023)];
-const monthValidators = [required(2), isBetweenRange(1, 12)];
-const dayValidators = [required(2), isBetweenRange(1, 31)];
-const dateValidators = [isValidDate, isBeforeDate];
+const yearValidators = [required, isBetweenRange(1900, 2023)];
+const monthValidators = [required, isBetweenRange(1, 12)];
+const dayValidators = [required, isBetweenRange(1, 31)];
 
+//check after the onclick event
 document.querySelector(".image").addEventListener("click", () => {
+  //NEW
+  let birthdayString = {
+    year: "",
+    month: "",
+    day: "",
+  };
+
+  //NEW
+  birthdayString.day = characterValidator(2, "day", birthday.day); //days
+  birthdayString.month = characterValidator(2, "month", birthday.month); //months
+  birthdayString.year = characterValidator(4, "year", birthday.year); //years
+
+  //NEW
   let birthdayDate = dayjs(
-    `${birthday.year}-${birthday.month}-${birthday.day}`,
+    `${birthdayString.year}-${birthdayString.month}-${birthdayString.day}`,
     "YYYY-MM-DD",
     true
   );
 
+  console.log(birthdayDate);
+  //initial validators
   const yearErrors = validate(birthday.year, yearValidators);
   const monthErrors = validate(birthday.month, monthValidators);
   const dayErrors = validate(birthday.day, dayValidators);
-
+  //display single error only
   document.querySelector(".yearInput > .error").textContent = yearErrors[0];
   document.querySelector(".monthInput > .error").textContent = monthErrors[0];
   document.querySelector(".dayInput > .error").textContent = dayErrors[0];
-
+  //reset the previous date
   document.querySelector(".yearResult").innerHTML = "--";
   document.querySelector(".monthResult").innerHTML = "--";
   document.querySelector(".dayResult").innerHTML = "--";
-
+  //if numbers are ok validate whole date
   if (
     yearErrors.length === 0 &&
     monthErrors.length === 0 &&
     dayErrors.length === 0
   ) {
+    const dateValidators = [isValidDate, isBeforeDate];
     const dateErrors = validate(birthdayDate, dateValidators);
     document.querySelector(".dayInput > .error").textContent = dateErrors[0];
-
+    //if whole date is valid then calculate the result
     if (dateErrors.length === 0) {
       let diff = dayjs.preciseDiff(birthdayDate, currentDate, true);
       document.querySelector(".yearResult").innerHTML = diff.years;
