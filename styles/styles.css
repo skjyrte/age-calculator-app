@@ -1,7 +1,5 @@
-
-
 html {
-font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -27,7 +25,7 @@ body {
   padding: 12px;
 }
 
-.inputBox>label {
+.inputBox > label {
   /*typical behaviour overriden?*/
   font-size: 11px;
   font-weight: 400;
@@ -37,12 +35,12 @@ body {
   display: block;
 }
 
-.inputBox>input {
+.inputBox > input {
   font-size: 16px;
   font-weight: 800;
   color: hsl(0, 0%, 8%);
-  height:40px;
-  width:70px;
+  height: 40px;
+  width: 70px;
   border-radius: 3px;
   border-width: 1px;
   padding-left: 15px;
@@ -56,14 +54,14 @@ body {
   margin-bottom: 50px;
 }
 
-.image>img {
+.image > img {
   background-color: hsl(259, 100%, 65%);
   border-radius: 50%;
   width: 30px;
   height: 30px;
   /*vertical margin offset*/
   margin-bottom: -30px;
-  padding:15px;
+  padding: 15px;
 }
 
 /*results*/
@@ -73,10 +71,12 @@ body {
   height: 60px;
   font-size: 40px;
   font-weight: 800;
-  font-style: italic
+  font-style: italic;
 }
 
-.dayResult, .monthResult, .yearResult {
+.dayResult,
+.monthResult,
+.yearResult {
   margin: 0;
   color: hsl(259, 100%, 65%);
 }
@@ -86,13 +86,12 @@ body {
   color: hsl(0, 0%, 8%);
 }
 
-
 test {
-color: hsl(259, 100%, 65%);
-color: hsl(0, 100%, 67%);
-color: hsl(0, 0%, 100%);
-color: hsl(0, 0%, 94%);
-color: hsl(0, 0%, 86%);
-color: hsl(0, 1%, 44%);
-color: hsl(0, 0%, 8%);
+  color: hsl(259, 100%, 65%);
+  color: hsl(0, 100%, 67%);
+  color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 94%);
+  color: hsl(0, 0%, 86%);
+  color: hsl(0, 1%, 44%);
+  color: hsl(0, 0%, 8%);
 }

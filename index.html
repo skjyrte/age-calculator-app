@@ -1,63 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles/styles.css">
-  <script src="./script/dayjs.min.js"></script>
-  <script src="./script/precise-range.js"></script>
-  <script src="./script/customParseFormat.js"></script>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="./script/dayjs.min.js"></script>
+    <script src="./script/precise-range.js"></script>
+    <script src="./script/customParseFormat.js"></script>
 
-  <title>Frontend Mentor | Age calculator app</title>
-
-
-</head>
-<body>
-
-  <div class="frame">
-    <div class="inputArea">
-      <div class="inputBox dayInput">
-        <label for="day">Day</label>
-        <input type="number" id="day" name="day" placeholder="DD" required minlength="1" maxlength="2" size="2">
-        <div class="error">a</div>  
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="inputArea">
+        <div class="inputBox dayInput">
+          <label for="day">Day</label>
+          <input
+            type="number"
+            id="day"
+            name="day"
+            placeholder="DD"
+            required
+            maxlength="2"
+            size="2"
+          />
+          <div class="error">a</div>
+        </div>
+        <div class="inputBox monthInput">
+          <label for="month">Month</label>
+          <input
+            type="number"
+            id="month"
+            name="month"
+            placeholder="MM"
+            required
+            maxlength="2"
+            size="2"
+          />
+          <div class="error">b</div>
+        </div>
+        <div class="inputBox yearInput">
+          <label for="year">Year</label>
+          <input
+            type="number"
+            id="year"
+            name="year"
+            placeholder="YYYY"
+            required
+            maxlength="4"
+            size="4"
+          />
+          <div class="error">c</div>
+        </div>
       </div>
-      <div class="inputBox monthInput">
-        <label for="month">Month</label>
-        <input type="number" id="month" name="month" placeholder="MM" required minlength="1" maxlength="2" size="2">
-        <div class="error">b</div>
+      <div class="image">
+        <img src="images\icon-arrow.svg" />
       </div>
-      <div class="inputBox yearInput">
-        <label for="year">Year</label>
-        <input type="number" id="year" name="year" placeholder="YYYY" required minlength="4" maxlength="4" size="4">
-        <div class="error">c</div>
+
+      <div class="resultArea">
+        <div class="resultField">
+          <p class="yearResult">--</p>
+          <p class="resultDesc">years</p>
+        </div>
+        <div class="resultField">
+          <p class="monthResult">--</p>
+          <p class="resultDesc">months</p>
+        </div>
+        <div class="resultField">
+          <p class="dayResult">--</p>
+          <p class="resultDesc">days</p>
+        </div>
       </div>
     </div>
-    <div class="image"> 
-      <img src="images\icon-arrow.svg">
-    </div>
 
-    <div class="resultArea">
-      <div class="resultField">
-        <p class="yearResult">--</p>
-        <p class="resultDesc">years</p></div>
-      <div class="resultField">
-        <p class="monthResult">--</p>
-        <p class="resultDesc">months</p></div>
-      <div class="resultField">
-        <p class="dayResult">--</p>
-        <p class="resultDesc">days</p></div>
-    </div>
-  </div>
-
-  </div>
-
-<script src="./script/script.js"></script>
-
-</body>
-
+    <script src="./script/script.js"></script>
+  </body>
 </html>
