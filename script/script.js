@@ -14,6 +14,13 @@ document.querySelectorAll('input[type="number"]').forEach((input) => {
 document.querySelector(".inputArea").addEventListener("input", setValue);
 function setValue(e) {
   birthday[e.target.name] = e.target.valueAsNumber; //value is a string
+  e.target.parentNode.classList.remove("errorStyles");
+  //reset the previous date
+  document.querySelector(".yearResult").innerHTML = "--";
+  document.querySelector(".monthResult").innerHTML = "--";
+  document.querySelector(".dayResult").innerHTML = "--";
+  //clear the error field on input
+  document.querySelector(`.${e.target.name}Input > .error`).textContent = "";
 }
 
 //birthday object, property value type "number"
@@ -35,8 +42,6 @@ const required = (val) => {
 //day, month, year validator
 const isBetweenRange = (min, max) => (val) => {
   if (val < min) {
-    console.log(typeof val); //temp check
-    console.log(typeof min); //temp check
     return `Value should be at least ${min}.`;
   }
 
@@ -88,6 +93,24 @@ const yearValidators = [required, isBetweenRange(1900, 2023)];
 const monthValidators = [required, isBetweenRange(1, 12)];
 const dayValidators = [required, isBetweenRange(1, 31)];
 
+/*
+function colorError(val, obj) {
+  if (obj.length > 0){
+  document.querySelector(`.${val}Input`).classList.add("errorStyles")
+  };
+}
+*/
+
+function colorError(val, obj) {
+  if (obj.length > 0) {
+    val.forEach((element) =>
+      document.querySelector(`.${element}Input`).classList.add("errorStyles")
+    );
+  }
+}
+
+//array1.forEach(element => console.log(element));
+
 //check after the onclick event
 document.querySelector(".image").addEventListener("click", () => {
   //NEW
@@ -102,7 +125,6 @@ document.querySelector(".image").addEventListener("click", () => {
     true
   );
 
-  console.log(birthdayDate);
   //initial validators
   const yearErrors = validate(birthday.year, yearValidators);
   const monthErrors = validate(birthday.month, monthValidators);
@@ -111,10 +133,11 @@ document.querySelector(".image").addEventListener("click", () => {
   document.querySelector(".yearInput > .error").textContent = yearErrors[0];
   document.querySelector(".monthInput > .error").textContent = monthErrors[0];
   document.querySelector(".dayInput > .error").textContent = dayErrors[0];
-  //reset the previous date
-  document.querySelector(".yearResult").innerHTML = "--";
-  document.querySelector(".monthResult").innerHTML = "--";
-  document.querySelector(".dayResult").innerHTML = "--";
+
+  colorError(["day"], dayErrors);
+  colorError(["month"], monthErrors);
+  colorError(["year"], yearErrors);
+
   //if numbers are ok validate whole date
   if (
     yearErrors.length === 0 &&
@@ -125,6 +148,9 @@ document.querySelector(".image").addEventListener("click", () => {
     const dateErrors = validate(birthdayDate, dateValidators);
     document.querySelector(".dayInput > .error").textContent = dateErrors[0];
     //if whole date is valid then calculate the result
+
+    colorError(["day", "month", "year"], dateErrors);
+
     if (dateErrors.length === 0) {
       let diff = dayjs.preciseDiff(birthdayDate, currentDate, true);
       document.querySelector(".yearResult").innerHTML = diff.years;
