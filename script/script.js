@@ -21,7 +21,15 @@ function setValue(e) {
   document.querySelector(".dayResult").innerHTML = "--";
   //clear the error field on input
   document.querySelector(`.${e.target.name}Input > .error`).textContent = "";
+  if (dateErorrsMarker !== 0) {
+  document.querySelector(".dayInput").classList.remove("errorStyles")
+  document.querySelector(".monthInput").classList.remove("errorStyles")
+  document.querySelector(".yearInput").classList.remove("errorStyles")
+  }
 }
+
+//passing function scoped variable to global scoped event listener
+let dateErorrsMarker; 
 
 //birthday object, property value type "number"
 let birthday = {
@@ -111,6 +119,12 @@ function colorError(val, obj) {
 
 //array1.forEach(element => console.log(element));
 
+document.querySelector(".image>img").addEventListener("mouseover", (e) => {
+e.target.classList.add("mouseoverClass")})
+
+document.querySelector(".image>img").addEventListener("mouseout", (e) => {
+e.target.classList.remove("mouseoverClass")})
+
 //check after the onclick event
 document.querySelector(".image").addEventListener("click", () => {
   //NEW
@@ -138,6 +152,7 @@ document.querySelector(".image").addEventListener("click", () => {
   colorError(["month"], monthErrors);
   colorError(["year"], yearErrors);
 
+  dateErorrsMarker = 0;
   //if numbers are ok validate whole date
   if (
     yearErrors.length === 0 &&
@@ -150,6 +165,7 @@ document.querySelector(".image").addEventListener("click", () => {
     //if whole date is valid then calculate the result
 
     colorError(["day", "month", "year"], dateErrors);
+    dateErorrsMarker = dateErrors.length;
 
     if (dateErrors.length === 0) {
       let diff = dayjs.preciseDiff(birthdayDate, currentDate, true);

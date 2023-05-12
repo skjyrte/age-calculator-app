@@ -138,3 +138,6 @@ appearance: auto;
 }
 
 
+.mouseoverClass { 
+  filter: invert();
+}
