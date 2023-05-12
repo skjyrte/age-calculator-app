@@ -138,6 +138,8 @@ appearance: auto;
 }
 
 
-.mouseoverClass { 
+@media (pointer: fine) {
+  .mouseoverClass { 
   filter: invert();
+  }
 }
