@@ -101,14 +101,6 @@ const yearValidators = [required, isBetweenRange(1900, 2023)];
 const monthValidators = [required, isBetweenRange(1, 12)];
 const dayValidators = [required, isBetweenRange(1, 31)];
 
-/*
-function colorError(val, obj) {
-  if (obj.length > 0){
-  document.querySelector(`.${val}Input`).classList.add("errorStyles")
-  };
-}
-*/
-
 function colorError(val, obj) {
   if (obj.length > 0) {
     val.forEach((element) =>
@@ -116,8 +108,6 @@ function colorError(val, obj) {
     );
   }
 }
-
-//array1.forEach(element => console.log(element));
 
 document.querySelector(".image>img").addEventListener("mouseover", (e) => {
 e.target.classList.add("mouseoverClass")})

@@ -87,18 +87,6 @@ label {
   color: hsl(0, 0%, 8%);
 }
 
-test {
-  color: hsl(259, 100%, 65%);
-  color: hsl(0, 100%, 67%);
-  color: hsl(0, 0%, 100%);
-  color: hsl(0, 0%, 94%);
-  color: hsl(0, 0%, 86%);
-  color: hsl(0, 1%, 44%);
-  color: hsl(0, 0%, 8%);
-}
-
-
-
 /* For Chrome and Safari  */
       
 input[type="number"]::-webkit-outer-spin-button,
@@ -139,7 +127,15 @@ appearance: auto;
 
 
 @media (pointer: fine) {
-  .mouseoverClass { 
-  filter: invert();
+  .image>.mouseoverClass { 
+  /*filter: invert();*/
+  background-color: black;
   }
 }
+
+.inputBox>input:focus {
+outline: none;
+border: 1px solid hsl(259, 100%, 65%);
+}
+
+
