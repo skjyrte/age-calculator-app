@@ -7,8 +7,8 @@ document.querySelectorAll("input").forEach((input) => {
   input.oninput = () => {
     console.log(input.value);
     if (input.value == "") {
-      //firefox input type "number" bug fix
-      input.value = ""; //firefox input type "number" bug fix
+      /*firefox input type "number" bug fix*/
+      input.value = "";
     }
     if (input.value.length > input.maxLength)
       input.value = input.value.slice(0, input.maxLength);
