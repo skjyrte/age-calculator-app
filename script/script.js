@@ -1,53 +1,64 @@
 "use strict";
-//dayJS plugins
+
 dayjs.extend(preciseDiff);
 dayjs.extend(window.dayjs_plugin_customParseFormat);
-//limit the character count for input type "number"
-document.querySelectorAll('input[type="number"]').forEach((input) => {
+
+document.querySelectorAll("input").forEach((input) => {
   input.oninput = () => {
+    console.log(input.value);
+    if (input.value == "") {
+      /*firefox input type "number" bug fix*/
+      input.value = "";
+    }
     if (input.value.length > input.maxLength)
       input.value = input.value.slice(0, input.maxLength);
   };
 });
 
-//fill the birthday object with input values
 document.querySelector(".inputArea").addEventListener("input", setValue);
 function setValue(e) {
-  birthday[e.target.name] = e.target.valueAsNumber; //value is a string
+  birthday[e.target.name] = e.target.valueAsNumber;
   e.target.parentNode.classList.remove("errorStyles");
-  //reset the previous date
+
   document.querySelector(".yearResult").innerHTML = "--";
   document.querySelector(".monthResult").innerHTML = "--";
   document.querySelector(".dayResult").innerHTML = "--";
-  //clear the error field on input
+
   document.querySelector(`.${e.target.name}Input > .error`).textContent = "";
   if (dateErorrsMarker !== 0) {
-  document.querySelector(".dayInput").classList.remove("errorStyles")
-  document.querySelector(".monthInput").classList.remove("errorStyles")
-  document.querySelector(".yearInput").classList.remove("errorStyles")
+    document.querySelector(".dayInput").classList.remove("errorStyles");
+    document.querySelector(".monthInput").classList.remove("errorStyles");
+    document.querySelector(".yearInput").classList.remove("errorStyles");
   }
 }
 
-//passing function scoped variable to global scoped event listener
-let dateErorrsMarker; 
+let dateErorrsMarker;
 
-//birthday object, property value type "number"
+let currentDate = dayjs();
+
 let birthday = {
   year: 0,
   month: 0,
   day: 0,
 };
 
-const currentDate = dayjs();
+/******VALIDATORS******/
 
-//VALIDATORS
 const required = (val) => {
   if (!val) {
     return "This field is required.";
   }
 };
 
-//day, month, year validator
+const characterValidator = (lngth, selector, val) => {
+  let valStr = val.toString();
+  while (valStr.length < lngth) {
+    valStr = "0" + valStr;
+    document.querySelector(`#${selector}`).value = valStr;
+  }
+  return valStr;
+};
+
 const isBetweenRange = (min, max) => (val) => {
   if (val < min) {
     return `Value should be at least ${min}.`;
@@ -59,17 +70,7 @@ const isBetweenRange = (min, max) => (val) => {
 
   return null;
 };
-//NEW
-const characterValidator = (lngth, selector, val) => {
-  let valStr = val.toString();
-  while (valStr.length < lngth) {
-    valStr = "0" + valStr;
-    document.querySelector(`#${selector}`).value = valStr;
-  }
-  return valStr;
-};
 
-//birthday date validator
 const isValidDate = (val) => {
   if (!val.isValid()) {
     return "Must be a valid date.";
@@ -78,7 +79,6 @@ const isValidDate = (val) => {
   return null;
 };
 
-//birthday date validator
 const isBeforeDate = (val) => {
   if (!dayjs(val).isBefore(currentDate)) {
     return "Birthday date must be in the past.";
@@ -109,31 +109,25 @@ function colorError(val, obj) {
   }
 }
 
-document.querySelector(".image>img").addEventListener("mouseover", (e) => {
-e.target.classList.add("mouseoverClass")})
+document.querySelector(".image>button").addEventListener("mouseover", (e) => {
+  e.currentTarget.classList.add("mouseoverClass");
+});
 
-document.querySelector(".image>img").addEventListener("mouseout", (e) => {
-e.target.classList.remove("mouseoverClass")})
+document.querySelector(".image>button").addEventListener("mouseout", (e) => {
+  e.currentTarget.classList.remove("mouseoverClass");
+});
 
-//check after the onclick event
-document.querySelector(".image").addEventListener("click", () => {
-  //NEW
-  characterValidator(2, "day", birthday.day); //days
-  characterValidator(2, "month", birthday.month); //months
-  characterValidator(4, "year", birthday.year); //years
+/******VALIDATION BUTTON******/
 
-  //NEW
-  let birthdayDate = dayjs(
-    `${birthday.year}-${birthday.month}-${birthday.day}`,
-    "YYYY-M-D",
-    true
-  );
+document.querySelector(".image>button").addEventListener("click", () => {
+  characterValidator(2, "day", birthday.day);
+  characterValidator(2, "month", birthday.month);
+  characterValidator(4, "year", birthday.year);
 
-  //initial validators
   const yearErrors = validate(birthday.year, yearValidators);
   const monthErrors = validate(birthday.month, monthValidators);
   const dayErrors = validate(birthday.day, dayValidators);
-  //display single error only
+
   document.querySelector(".yearInput > .error").textContent = yearErrors[0];
   document.querySelector(".monthInput > .error").textContent = monthErrors[0];
   document.querySelector(".dayInput > .error").textContent = dayErrors[0];
@@ -142,20 +136,27 @@ document.querySelector(".image").addEventListener("click", () => {
   colorError(["month"], monthErrors);
   colorError(["year"], yearErrors);
 
+  currentDate = dayjs();
+
   dateErorrsMarker = 0;
-  //if numbers are ok validate whole date
+
   if (
     yearErrors.length === 0 &&
     monthErrors.length === 0 &&
     dayErrors.length === 0
   ) {
+    let birthdayDate = dayjs(
+      `${birthday.year}-${birthday.month}-${birthday.day}`,
+      "YYYY-M-D",
+      true
+    );
     const dateValidators = [isValidDate, isBeforeDate];
     const dateErrors = validate(birthdayDate, dateValidators);
     document.querySelector(".dayInput > .error").textContent = dateErrors[0];
-    //if whole date is valid then calculate the result
+
+    dateErorrsMarker = dateErrors.length;
 
     colorError(["day", "month", "year"], dateErrors);
-    dateErorrsMarker = dateErrors.length;
 
     if (dateErrors.length === 0) {
       let diff = dayjs.preciseDiff(birthdayDate, currentDate, true);
