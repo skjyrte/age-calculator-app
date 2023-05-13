@@ -14,8 +14,8 @@ body {
   border-radius: 20px 20px 60px 20px;
 }
 
-/*inputs*/
 
+/*INPUTS*/
 .inputArea {
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@ body {
 }
 
 label {
-  /*typical behaviour overriden?*/
+  /*default behaviour overriden*/
   font-size: 11px;
   font-weight: 400;
   text-transform: uppercase;
@@ -36,9 +36,10 @@ label {
 }
 
 .inputBox > input {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 800;
   color: hsl(0, 0%, 8%);
+  background-color: white;
   height: 40px;
   width: 95px;
   border-radius: 3px;
@@ -46,6 +47,23 @@ label {
   padding-left: 10px;
 }
 
+
+/* TURNING OFF THE SCROLL BUTTON IN INPUT TYPE NUMBER  */
+/* For Chrome and Safari  */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox  */
+input[type="number"] {
+  appearance: auto;
+  -moz-appearance: textfield;
+}
+
+
+/*BUTTON*/
 .image {
   display: flex;
   justify-content: center;
@@ -54,22 +72,29 @@ label {
   margin-bottom: 50px;
 }
 
-.image > img {
+button > img {
   background-color: hsl(259, 100%, 65%);
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  /*vertical margin offset*/
-  margin-bottom: -30px;
   padding: 15px;
 }
 
-/*results*/
+.image>button {
+  background-color: transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-bottom: -30px;
+  border: 0;
+  padding: 0;
+}
 
+/*RESULTS*/
 .resultField {
   display: flex;
-  height: 60px;
-  font-size: 40px;
+  height: 80px;
+  font-size: 60px;
   font-weight: 800;
   font-style: italic;
 }
@@ -87,33 +112,6 @@ label {
   color: hsl(0, 0%, 8%);
 }
 
-test {
-  color: hsl(259, 100%, 65%);
-  color: hsl(0, 100%, 67%);
-  color: hsl(0, 0%, 100%);
-  color: hsl(0, 0%, 94%);
-  color: hsl(0, 0%, 86%);
-  color: hsl(0, 1%, 44%);
-  color: hsl(0, 0%, 8%);
-}
-
-
-
-/* For Chrome and Safari  */
-      
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
-}
-      
-/* For Firefox  */
-      
-input[type="number"] {
-appearance: auto;
--moz-appearance: textfield;
-}
-
 
 .error { 
   display: flex;
@@ -126,9 +124,7 @@ appearance: auto;
   width: 110px;
 }
 
-
-/*error classes */
-
+/*ERROR CLASSES*/
 .errorStyles > input { 
   border: 1px solid hsl(0, 100%, 67%);
 }
@@ -137,9 +133,39 @@ appearance: auto;
   color: hsl(0, 100%, 67%);
 }
 
-
 @media (pointer: fine) {
-  .mouseoverClass { 
-  filter: invert();
+  .mouseoverClass > img { 
+  background-color: black;
+  }
+}
+
+/*ERROR CLASSES*/
+
+@media (max-width:400px) {
+  .error {
+      width: 80px;
+  }
+  .inputBox>input {
+    width: 65px;
+  }
+  .resultField {
+    height: 60px;
+    font-size: 40px;
+  }
+}
+
+@media (min-width:550px) {
+  .frame {
+    padding: 30px;
+    width:450px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+  .image {
+  justify-content: right;
+  }
+  .inputArea {
+  margin-bottom: -30px;
+  justify-content: left;
   }
 }
