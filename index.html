@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       rel="icon"
       type="image/png"
@@ -16,12 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/styles.css"/>
-    <script src="./script/dayjs.min.js"></script>
-    <script src="./script/precise-range.js"></script>
-    <script src="./script/customParseFormat.js"></script>
-
-
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="./node_modules/dayjs/dayjs.min.js"></script>
+    <script src="./node_modules/dayjs/plugin/customParseFormat.js"></script>
+    <script src="./node_modules/dayjs-precise-range/precise-range.js"></script>
     <title>Frontend Mentor | Age calculator app</title>
   </head>
   <body>
@@ -35,7 +32,7 @@
             name="day"
             placeholder="DD"
             required
-            maxLength="2"
+            maxlength="2"
             size="2"
           />
           <div class="error"></div>
@@ -48,7 +45,7 @@
             name="month"
             placeholder="MM"
             required
-            maxLength="2"
+            maxlength="2"
             size="2"
           />
           <div class="error"></div>
@@ -61,18 +58,17 @@
             name="year"
             placeholder="YYYY"
             required
-            maxLength="4"
+            maxlength="4"
             size="4"
           />
           <div class="error"></div>
         </div>
       </div>
       <div class="image">
-        <button type="button"> 
-          <img src="images\icon-arrow.svg"/> 
+        <button type="button">
+          <img src="images\icon-arrow.svg" alt="calculate button" />
         </button>
       </div>
-
       <div class="resultArea">
         <div class="resultField">
           <p class="yearResult">--</p>
@@ -88,10 +84,11 @@
         </div>
       </div>
     </div>
-
     <div class="attribution">
       Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://github.com/skjyrte">JF</a>.
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/skjyrte">skjyrte</a>.
     </div>
     <script src="./script/script.js"></script>
   </body>

@@ -14,8 +14,6 @@ body {
   border-radius: 20px 20px 60px 20px;
 }
 
-
-/*INPUTS*/
 .inputArea {
   display: flex;
   justify-content: center;
@@ -46,8 +44,6 @@ label {
   padding-left: 10px;
 }
 
-
-/* TURNING OFF THE SCROLL BUTTON IN INPUT TYPE NUMBER  */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -59,8 +55,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
-/*BUTTON*/
 .image {
   display: flex;
   justify-content: center;
@@ -76,7 +70,7 @@ button > img {
   padding: 15px;
 }
 
-.image>button {
+.image > button {
   background-color: transparent;
   border-radius: 50%;
   width: 60px;
@@ -86,7 +80,6 @@ button > img {
   padding: 0;
 }
 
-/*RESULTS*/
 .resultField {
   display: flex;
   height: 80px;
@@ -108,8 +101,7 @@ button > img {
   color: hsl(0, 0%, 8%);
 }
 
-
-.error { 
+.error {
   display: flex;
   justify-content: left;
   font-size: 10px;
@@ -120,8 +112,7 @@ button > img {
   width: 110px;
 }
 
-/*ERROR CLASSES*/
-.errorStyles > input { 
+.errorStyles > input {
   border: 1px solid hsl(0, 100%, 67%);
 }
 
@@ -130,17 +121,16 @@ button > img {
 }
 
 @media (pointer: fine) {
-  .mouseoverClass > img { 
-  background-color: black;
+  .image > button:hover > img {
+    background-color: black;
   }
 }
 
-/*MEDIA*/
-@media (max-width:400px) {
+@media (max-width: 400px) {
   .error {
-      width: 80px;
+    width: 80px;
   }
-  .inputBox>input {
+  .inputBox > input {
     width: 65px;
   }
   .resultField {
@@ -149,19 +139,19 @@ button > img {
   }
 }
 
-@media (min-width:550px) {
+@media (min-width: 550px) {
   .frame {
     padding: 30px;
-    width:450px;
+    width: 450px;
     margin-left: auto;
     margin-right: auto;
-    }
+  }
   .image {
-  justify-content: right;
+    justify-content: right;
   }
   .inputArea {
-  margin-bottom: -30px;
-  justify-content: left;
+    margin-bottom: -30px;
+    justify-content: left;
   }
 }
 

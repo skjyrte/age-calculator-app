@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/skjyrte/003/issues"
   },
-  "homepage": "https://github.com/skjyrte/003#readme"
+  "homepage": "https://github.com/skjyrte/003#readme",
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "dayjs-precise-range": "^1.0.1",
+    "prettier": "^2.8.8"
+  }
 }

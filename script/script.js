@@ -5,11 +5,8 @@ dayjs.extend(window.dayjs_plugin_customParseFormat);
 
 document.querySelectorAll("input").forEach((input) => {
   input.oninput = () => {
-    console.log(input.value);
-    if (input.value == "") {
-      /*firefox input type "number" bug fix*/
-      input.value = "";
-    }
+    /*input type "number" fix*/
+    input.value = input.value;
     if (input.value.length > input.maxLength)
       input.value = input.value.slice(0, input.maxLength);
   };
@@ -108,14 +105,6 @@ function colorError(val, obj) {
     );
   }
 }
-
-document.querySelector(".image>button").addEventListener("mouseover", (e) => {
-  e.currentTarget.classList.add("mouseoverClass");
-});
-
-document.querySelector(".image>button").addEventListener("mouseout", (e) => {
-  e.currentTarget.classList.remove("mouseoverClass");
-});
 
 /******VALIDATION BUTTON******/
 
