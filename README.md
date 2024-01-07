@@ -13,6 +13,7 @@ https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q
 ## Features:
 
 - DayJS library for time calculation.
+- Error handling.
 
 ## Getting started:
 

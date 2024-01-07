@@ -1,7 +1,4 @@
-0_untracked
 node_modules
 images
-*.json
-precise-range.js
-dayjs.min.js
-customParseFormat.js
+.*
+dayjs

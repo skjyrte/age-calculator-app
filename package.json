@@ -2,22 +2,15 @@
   "name": "003",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "script/script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skjyrte/003.git"
+    "formatWrite": "prettier . --write",
+    "formatCheck": "prettier . --check"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/skjyrte/003/issues"
-  },
-  "homepage": "https://github.com/skjyrte/003#readme",
-  "dependencies": {
+  "devDependencies": {
     "dayjs": "^1.11.7",
     "dayjs-precise-range": "^1.0.1",
     "prettier": "^2.8.8"

@@ -129,11 +129,7 @@ document.querySelector(".image>button").addEventListener("click", () => {
 
   dateErorrsMarker = 0;
 
-  if (
-    yearErrors.length === 0 &&
-    monthErrors.length === 0 &&
-    dayErrors.length === 0
-  ) {
+  if (yearErrors.length === 0 && monthErrors.length === 0 && dayErrors.length === 0) {
     let birthdayDate = dayjs(
       `${birthday.year}-${birthday.month}-${birthday.day}`,
       "YYYY-M-D",
